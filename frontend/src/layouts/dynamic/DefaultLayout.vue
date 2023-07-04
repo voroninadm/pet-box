@@ -23,6 +23,7 @@ const isLoginOpen = ref(false);
   flex-direction: column;
   height: 100vh;
   align-items: center;
+  overflow: hidden;
 }
 
 .content {

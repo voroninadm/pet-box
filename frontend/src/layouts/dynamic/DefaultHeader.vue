@@ -1,5 +1,5 @@
 <template>
-  <div class="header bg-white-200">
+  <div class="header bg-slate-50">
     <div class="flex gap-2">
       <router-link :to="{ name: 'home' }">
         <svg
@@ -13,7 +13,7 @@
         </svg>
       </router-link>
 
-      <router-link :to="{ name: 'secondPage' }" class="mx-2">
+      <router-link :to="{ name: 'createProduct' }" class="mx-2">
         <svg
           class="header__icon"
           xmlns="http://www.w3.org/2000/svg"
