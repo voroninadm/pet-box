@@ -2,7 +2,7 @@ export const totalDaysHolding = 7;
 
 export const daysInWeek = 7;
 
-export const months = [
+export const months_ru = [
   "Января",
   "Февраля",
   "Марта",

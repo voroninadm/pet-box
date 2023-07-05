@@ -8,10 +8,12 @@
       </h1>
       <form action="#" class="flex flex-col">
         <div class="flex flex-col my-3 gap-2">
-          <label class="flex justify-between">Номер накладной
+          <label class="flex justify-between"
+            >Номер накладной
             <input type="text" class="border" />
           </label>
-          <label class="flex justify-between">Заказчик
+          <label class="flex justify-between"
+            >Заказчик
             <input type="text" class="border" />
           </label>
           <label class="flex justify-between">
@@ -22,38 +24,34 @@
             Окончание хранения
             <span>{{ weekAfterDate() }}</span>
           </label>
-          <small class="text-green-600 text-center my-1">Товар хранится на складе не более 1 недели!</small>
+          <small class="text-green-600 text-center my-1"
+            >Товар хранится на складе не более
+            {{ totalDaysHolding }} дней!</small
+          >
         </div>
-        <button type="submit" class="border rounded-lg w-1/3 m-auto">Save</button>
+        <button type="submit" class="border rounded-lg w-1/3 m-auto">
+          Save
+        </button>
       </form>
     </section>
   </transition>
 </template>
 
 <script setup>
-import { daysInWeek } from "@/common/constants";
-import { months } from "@/common/constants";
+import { months_ru, totalDaysHolding } from "@/common/constants";
 
 const currentDate = () => {
   const date = new Date();
   return (
-    date.getDate() +
-    " " +
-    months[date.getMonth() + 1] +
-    " " +
-    date.getFullYear()
+    date.getDate() + " " + months_ru[date.getMonth()] + " " + date.getFullYear()
   );
 };
 
 const weekAfterDate = () => {
   const date = new Date();
-  date.setDate(date.getDate() + daysInWeek);
+  date.setDate(date.getDate() + totalDaysHolding);
   return (
-    date.getDate() +
-    " " +
-    months[date.getMonth() + 1] +
-    " " +
-    date.getFullYear()
+    date.getDate() + " " + months_ru[date.getMonth()] + " " + date.getFullYear()
   );
 };
 </script>
