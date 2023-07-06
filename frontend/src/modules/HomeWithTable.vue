@@ -15,7 +15,7 @@
         <td class="text-center border">{{ box.invoice }}</td>
         <td class="text-center border">{{ box.customer }}</td>
         <td class="text-center border">{{ date_add(box.date_add) }}</td>
-        <td class="text-center border">{{ box.date_add }}</td>
+        <td class="text-center border text-red-300 animate-pulse">{{ isLateDate(box.date_add) }}</td>
       </tr>
     </tbody>
   </table>
@@ -23,16 +23,19 @@
 
 <script setup>
 import boxes from "@/mocks/boxes";
-import { months_ru } from "@/common/constants";
+import { totalDaysHolding } from "@/common/constants";
+
+import moment from "moment/dist/moment";
+import ru from "moment/dist/locale/ru";
+moment.locale("ru", ru);
 
 const date_add = (date) => {
-  let normalizedData = new Date(Date.parse(date));
-  return (
-    normalizedData.getDate() +
-    " " +
-    months_ru[normalizedData.getMonth()] +
-    " " +
-    normalizedData.getFullYear()
-  );
+  return moment(date).format("D MMM YYYY");
+};
+
+const isLateDate = (date) => {
+  let now = moment();
+  let dateAdd = moment(date);
+  return now.diff(dateAdd, "days") > totalDaysHolding ? "Просрочен" : "";
 };
 </script>
