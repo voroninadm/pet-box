@@ -18,11 +18,11 @@
           </label>
           <label class="flex justify-between">
             Начало хранения
-            <span>{{ currentDate() }}</span>
+            <span>{{ normalizeData() }}</span>
           </label>
           <label class="flex justify-between">
             Окончание хранения
-            <span>{{ weekAfterDate() }}</span>
+            <span>{{ deadlineDate() }}</span>
           </label>
           <small class="text-green-600 text-center my-1"
             >Товар хранится на складе не более
@@ -38,22 +38,8 @@
 </template>
 
 <script setup>
-import { months_ru, totalDaysHolding } from "@/common/constants";
-
-const currentDate = () => {
-  const date = new Date();
-  return (
-    date.getDate() + " " + months_ru[date.getMonth()] + " " + date.getFullYear()
-  );
-};
-
-const weekAfterDate = () => {
-  const date = new Date();
-  date.setDate(date.getDate() + totalDaysHolding);
-  return (
-    date.getDate() + " " + months_ru[date.getMonth()] + " " + date.getFullYear()
-  );
-};
+import { totalDaysHolding } from "@/common/constants";
+import { normalizeData, deadlineDate } from "@/common/helpers";
 </script>
 
 <style scoped>
