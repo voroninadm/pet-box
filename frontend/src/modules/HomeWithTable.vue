@@ -17,7 +17,7 @@
           'animate-pulse': isHoldingDateExpired(box.date_add),
           'text-red-800': isHoldingDateExpired(box.date_add),
         }"
-        @click="toUpdateProduct()"
+        @click="router.push({ path: `product/edit/${box.id}` })"
       >
         <td class="text-center border">{{ box.cell }}</td>
         <td class="text-center border">{{ box.invoice }}</td>
@@ -34,8 +34,4 @@ import { normalizeData, isHoldingDateExpired } from "@/common/helpers";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
-
-const toUpdateProduct = () => {
-  router.push({ name: "updateProduct" });
-};
 </script>

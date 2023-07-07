@@ -7,26 +7,26 @@
         <div class="flex flex-col my-3 gap-2">
           <label class="flex justify-between"
             >Номер накладной
-            <input type="text" class="border" />
+            <input :value="props.box.invoice" type="text" class="border" />
           </label>
           <label class="flex justify-between"
             >Заказчик
-            <input type="text" class="border" />
+            <input :value="props.box.customer" type="text" class="border" />
           </label>
           <label class="flex justify-between">
             Начало хранения
-            <span>{{ normalizeData() }}</span>
+            <span>{{ normalizeData(props.box.date_add) }}</span>
           </label>
           <label class="flex justify-between">
             Окончание хранения
-            <span>{{ deadlineDate() }}</span>
+            <span>{{ deadlineDate(props.box.date_add) }}</span>
           </label>
           <small class="text-green-600 text-center my-1"
             >Товар хранится на складе не более
             {{ totalDaysHolding }} дней!</small
           >
         </div>
-        <slot />
+        <slot name="buttons" />
       </form>
     </section>
   </transition>
@@ -35,6 +35,13 @@
 <script setup>
 import { totalDaysHolding } from "@/common/constants";
 import { normalizeData, deadlineDate } from "@/common/helpers";
+
+const props = defineProps({
+  box: {
+    type: Object,
+    default: null,
+  },
+});
 </script>
 
 <style scoped>

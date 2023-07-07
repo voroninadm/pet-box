@@ -14,7 +14,7 @@ export const isHoldingDateExpired = (date) => {
   return now.diff(startHoldingDate, "days") > totalDaysHolding ? true : false;
 };
 
-export const deadlineDate = () => {
-  let startHoldingDate = moment();
-  return startHoldingDate.add("days", totalDaysHolding).format("D MMM YYYY");
+export const deadlineDate = (date = new Date()) => {
+  let startHoldingDate = moment(date);
+  return startHoldingDate.add(totalDaysHolding, "days").format("D MMM YYYY");
 };

@@ -43,7 +43,7 @@
   </div>
   <transition
     name="view"
-    enter-active-class="animate__animated animate__bounceInRight"
+    enter-active-class="animate__animated animate__fadeInRight"
   >
     <component :is="homePage">
       <slot />

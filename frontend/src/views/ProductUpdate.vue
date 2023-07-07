@@ -1,20 +1,29 @@
 <template>
-  <product-card>
-    <div class="flex w-1/2 m-auto">
-      <button type="submit" class="border rounded-lg m-auto hover:bg-green-100 transition duration-200">
-        <svg class="w-16 h-16" xmlns="http://www.w3.org/2000/svg" viewBox="-6.5 0 32 32">
-          <path d="M12.2 4.5V9h2.4l-4.8 6-5-5.9h2.6V4.5h4.8zm4.1 7.5 2.9 4.5.3 1.5v8.7c0 .5-.4.8-.8.8H.8a.8.8 0 0 1-.8-.8V18l.3-1.5L3.2 12c.1-.4.7-.8 1-.8h1.4l1.3 1.6H4.3l-2.6 4.7v.2h16.1v-.2l-2.5-4.7h-2.7l1.3-1.6h1.3c.4 0 1 .4 1.1.8zm-8.8 9H12c.4 0 .7-.3.7-.8 0-.4-.3-.8-.7-.8H7.5c-.5 0-.8.4-.8.8 0 .5.3.8.8.8z" />
-        </svg>
-      </button>
-      <button type="submit" class="border rounded-lg m-auto hover:bg-red-200 transition duration-200">
-        <svg class="w-16 h-16" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-          <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 5h12M9 5v0a4 4 0 0 1 6 0v0M9 20h6a2 2 0 0 0 2-2V9c0-.6-.4-1-1-1H8a1 1 0 0 0-1 1v9c0 1.1.9 2 2 2Z" />
-        </svg>
-      </button>
-    </div>
+  <product-card :box="box">
+    <template #buttons>
+      <div class="flex w-1/2 m-auto">
+        <save-button />
+        <delete-button />
+      </div>
+    </template>
   </product-card>
 </template>
 
 <script setup>
 import ProductCard from "@/modules/ProductCard.vue";
+import SaveButton from "@/common/components/SaveButton.vue";
+import DeleteButton from "@/common/components/DeleteButton.vue";
+import { useRoute } from "vue-router";
+import boxes from "@/mocks/boxes";
+
+const route = useRoute();
+
+// Находим задачу из массива задач по id из строки URL
+const box = boxes.find((box) => +box.id === +route.params.id);
+
+import { onMounted } from "vue";
+
+onMounted(() => {
+  console.log(box);
+});
 </script>

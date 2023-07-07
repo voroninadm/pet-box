@@ -23,8 +23,8 @@ export default [
         component: () => import("@/views/ProductCreate.vue"),
       },
       {
-        path: "update",
-        name: "updateProduct",
+        path: "edit/:id",
+        name: "editProduct",
         component: () => import("@/views/ProductUpdate.vue"),
       },
     ],
