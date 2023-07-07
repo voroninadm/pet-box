@@ -1,53 +1,22 @@
 <template>
-  <transition appear enter-active-class="animate__animated animate__flipInX">
-    <section class="product w-1/4 mt-5 border drop-shadow p-3 bg-slate-50">
-      <div class="product__image"></div>
-      <h1 class="text-center text-lg">
-        Карточка товара
-        <!-- <slot /> -->
-      </h1>
-      <form action="#" class="flex flex-col">
-        <div class="flex flex-col my-3 gap-2">
-          <label class="flex justify-between"
-            >Номер накладной
-            <input type="text" class="border" />
-          </label>
-          <label class="flex justify-between"
-            >Заказчик
-            <input type="text" class="border" />
-          </label>
-          <label class="flex justify-between">
-            Начало хранения
-            <span>{{ normalizeData() }}</span>
-          </label>
-          <label class="flex justify-between">
-            Окончание хранения
-            <span>{{ deadlineDate() }}</span>
-          </label>
-          <small class="text-green-600 text-center my-1"
-            >Товар хранится на складе не более
-            {{ totalDaysHolding }} дней!</small
-          >
-        </div>
-        <button type="submit" class="border rounded-lg w-1/3 m-auto">
-          Save
-        </button>
-      </form>
-    </section>
-  </transition>
+  <product-card>
+    <button
+      type="submit"
+      class="border rounded-lg m-auto hover:bg-green-100 transition duration-200"
+    >
+      <svg
+        class="w-16 h-16"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="-6.5 0 32 32"
+      >
+        <path
+          d="M12.2 4.5V9h2.4l-4.8 6-5-5.9h2.6V4.5h4.8zm4.1 7.5 2.9 4.5.3 1.5v8.7c0 .5-.4.8-.8.8H.8a.8.8 0 0 1-.8-.8V18l.3-1.5L3.2 12c.1-.4.7-.8 1-.8h1.4l1.3 1.6H4.3l-2.6 4.7v.2h16.1v-.2l-2.5-4.7h-2.7l1.3-1.6h1.3c.4 0 1 .4 1.1.8zm-8.8 9H12c.4 0 .7-.3.7-.8 0-.4-.3-.8-.7-.8H7.5c-.5 0-.8.4-.8.8 0 .5.3.8.8.8z"
+        />
+      </svg>
+    </button>
+  </product-card>
 </template>
 
 <script setup>
-import { totalDaysHolding } from "@/common/constants";
-import { normalizeData, deadlineDate } from "@/common/helpers";
+import ProductCard from "@/modules/ProductCard.vue";
 </script>
-
-<style scoped>
-.product__image {
-  width: 200px;
-  height: 200px;
-  background: url("@/assets/img/box-adding.png") 50% 50% no-repeat;
-  background-size: contain;
-  margin: auto;
-}
-</style>

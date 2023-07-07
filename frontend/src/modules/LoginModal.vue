@@ -1,41 +1,24 @@
 <template>
   <transition appear enter-active-class="animate__animated animate__fadeIn">
     <div>
-      <section
-        class="z-10 w-full h-full bg-gray-500/60 fixed top-0 left-0"
-        @click="$emit('close-login-modal')"
-      ></section>
+      <section class="z-10 w-full h-full bg-gray-500/60 fixed top-0 left-0" @click="$emit('close-login-modal')"></section>
       <div class="absolute inset-0">
         <div class="flex h-full">
           <div class="z-20 w-1/5 m-auto bg-white border rounded-lg p-2">
             <div>
               <form class="flex flex-col">
                 <div class="flex flex-col gap-2 my-2">
-                  <div
-                    class="login_img"
-                    :class="`login_img__${imgNumber(minBoxImage, maxBoxImage)}`"
-                  />
+                  <div class="login_img" :class="`login_img__${getImgNumber(minBoxImage, maxBoxImage)}`" />
                   <label class="flex justify-between">
                     Логин
-                    <input
-                      type="text"
-                      name="login"
-                      class="border rounded-lg bg-gray-200/50 drop-shadow"
-                    />
+                    <input type="text" name="login" class="border rounded-lg bg-gray-200/50 drop-shadow" />
                   </label>
                   <label class="flex justify-between">
                     Пароль
-                    <input
-                      type="password"
-                      name="password"
-                      class="border rounded-lg bg-gray-200/50 drop-shadow"
-                    />
+                    <input type="password" name="password" class="border rounded-lg bg-gray-200/50 drop-shadow" />
                   </label>
                 </div>
-                <button
-                  type="submit"
-                  class="border drop-shadow w-6/12 m-auto px-2 py-1 hover:bg-gray-200"
-                >
+                <button type="submit" class="border drop-shadow w-6/12 m-auto px-2 py-1 hover:bg-gray-200">
                   OK
                 </button>
               </form>
@@ -52,7 +35,7 @@ defineEmits(["close-login-modal"]);
 const minBoxImage = 1;
 const maxBoxImage = 4;
 
-const imgNumber = (min, max) => {
+const getImgNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 </script>

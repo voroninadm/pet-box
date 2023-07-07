@@ -1,11 +1,32 @@
 <template>
   <div class="shelves">
-    <div class="box box-2"></div>
-    <div class="box box-3"></div>
-    <div class="box box-16"></div>
-    <div class="box box-19"></div>
+    <div
+      class="box box-2 hover:scale-105 transition duration-200"
+      @click="toUpdateProduct"
+    ></div>
+    <div
+      class="box box-3 hover:scale-105 transition duration-200"
+      @click="toUpdateProduct"
+    ></div>
+    <div
+      class="box box-16 hover:scale-105 transition duration-200"
+      @click="toUpdateProduct"
+    ></div>
+    <div
+      class="box box-19 hover:scale-105 transition duration-200"
+      @click="toUpdateProduct"
+    ></div>
   </div>
 </template>
+
+<script setup>
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const toUpdateProduct = () => {
+  router.push({ name: "updateProduct" });
+};
+</script>
 
 <style scoped>
 .shelves {
@@ -23,6 +44,7 @@
 
   background-size: cover;
 }
+
 .box-2 {
   position: absolute;
   top: 235px;
