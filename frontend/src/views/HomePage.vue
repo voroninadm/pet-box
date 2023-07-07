@@ -41,9 +41,14 @@
       </svg>
     </button>
   </div>
-  <component :is="homePage">
-    <slot />
-  </component>
+  <transition
+    name="view"
+    enter-active-class="animate__animated animate__bounceInRight"
+  >
+    <component :is="homePage">
+      <slot />
+    </component>
+  </transition>
 </template>
 
 <script setup>
@@ -74,6 +79,7 @@ const setTableView = () => (homePage.value = HomeWithTable);
   padding: 2px;
   border: 1px solid gray;
 }
+
 .active {
   background-color: rgba(79, 234, 105, 0.328);
 }

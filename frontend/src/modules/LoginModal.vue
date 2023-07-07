@@ -16,7 +16,7 @@
                     :class="`login_img__${imgNumber(minBoxImage, maxBoxImage)}`"
                   />
                   <label class="flex justify-between">
-                    Login
+                    Логин
                     <input
                       type="text"
                       name="login"
@@ -24,7 +24,7 @@
                     />
                   </label>
                   <label class="flex justify-between">
-                    Password
+                    Пароль
                     <input
                       type="password"
                       name="password"
@@ -36,7 +36,7 @@
                   type="submit"
                   class="border drop-shadow w-6/12 m-auto px-2 py-1 hover:bg-gray-200"
                 >
-                  Let me in
+                  OK
                 </button>
               </form>
             </div>
