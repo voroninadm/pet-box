@@ -4,6 +4,8 @@ import moment from "moment/dist/moment";
 import ru from "moment/dist/locale/ru";
 moment.updateLocale("ru", ru);
 
+export const currentDate = moment();
+
 export const normalizeData = (date) => {
   return moment(date).format("D MMM YYYY");
 };
