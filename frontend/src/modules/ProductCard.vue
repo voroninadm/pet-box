@@ -1,5 +1,8 @@
 <template>
-  <transition appear enter-active-class="animate__animated animate__flipInX">
+  <transition
+    appear
+    enter-active-class="animate__animated animate__slideInDown"
+  >
     <section class="product w-1/4 mt-5 border drop-shadow p-3 bg-slate-50">
       <div class="product__image"></div>
       <h1 class="text-center text-lg">Карточка товара</h1>
@@ -21,7 +24,13 @@
             Окончание хранения
             <span>{{ deadlineDate(box.date_add) }}</span>
           </label>
-          <small class="text-green-600 text-center my-1"
+          <small
+            class="text-center my-1"
+            :class="
+              isHoldingDateExpired(box.date_add)
+                ? 'text-rose-600 transition animate-pulse'
+                : 'text-green-600'
+            "
             >Товар хранится на складе не более
             {{ totalDaysHolding }} дней!</small
           >
@@ -34,7 +43,12 @@
 
 <script setup>
 import { totalDaysHolding } from "@/common/constants";
-import { normalizeData, deadlineDate, currentDate } from "@/common/helpers";
+import {
+  normalizeData,
+  deadlineDate,
+  currentDate,
+  isHoldingDateExpired,
+} from "@/common/helpers";
 
 const props = defineProps({
   box: {

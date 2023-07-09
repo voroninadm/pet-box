@@ -10,12 +10,12 @@
     </thead>
     <tbody>
       <tr
-        v-for="box in boxes"
+        v-for="box in someBoxes"
         :key="box.id"
         class="border hover:bg-slate-200"
         :class="{
           'animate-pulse': isHoldingDateExpired(box.date_add),
-          'text-red-800': isHoldingDateExpired(box.date_add),
+          'text-rose-600': isHoldingDateExpired(box.date_add),
         }"
         @click="router.push({ path: `product/edit/${box.id}` })"
       >
@@ -29,7 +29,7 @@
 </template>
 
 <script setup>
-import boxes from "@/mocks/boxes";
+import someBoxes from "@/mocks/someBoxes";
 import { normalizeData, isHoldingDateExpired } from "@/common/helpers";
 import { useRouter } from "vue-router";
 

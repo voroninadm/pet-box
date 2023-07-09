@@ -1,6 +1,7 @@
 <template>
   <button
     class="border rounded-lg m-auto hover:bg-green-100 transition duration-200"
+    title="Сохранить"
   >
     <svg
       class="w-16 h-16"

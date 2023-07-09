@@ -1,6 +1,7 @@
 <template>
   <button
     type="submit"
+    title="Удалить"
     class="border rounded-lg m-auto hover:bg-red-200 transition duration-200"
   >
     <svg

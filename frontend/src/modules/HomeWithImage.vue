@@ -4,22 +4,24 @@
       v-for="box in someBoxes"
       :key="box.id"
       class="box"
-      :class="`box-${box.cell}`"
+      :class="[
+        `box-${box.cell}`,
+        isHoldingDateExpired(box.date_add) ? 'box-forgotten' : 'box-ok',
+      ]"
+      @click="router.push({ path: `product/edit/${box.id}` })"
     />
   </div>
 </template>
 
 <script setup>
 import someBoxes from "@/mocks/someBoxes.json";
-// import { useRouter } from "vue-router";
+import { isHoldingDateExpired } from "@/common/helpers";
+import { useRouter } from "vue-router";
 
-// const router = useRouter();
-// const toUpdateProduct = () => {
-//   router.push({ name: "updateProduct" });
-// };
+const router = useRouter();
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .shelves {
   width: 100vw;
   height: 100vh;
@@ -32,57 +34,64 @@ import someBoxes from "@/mocks/someBoxes.json";
   position: absolute;
   width: 110px;
   height: 90px;
+  transition: 0.3s;
 
   background-size: contain;
   background-repeat: no-repeat;
+
+  &:hover {
+    scale: 1.1;
+    opacity: 0.85;
+  }
+}
+
+.box-ok {
+  background-image: url("@/assets/img/box-ok.png");
+}
+
+.box-forgotten {
+  background-image: url("@/assets/img/box-forgotten.png");
 }
 
 /* First shelf */
 .box-1 {
   top: 140px;
   left: 235px;
-  background-image: url("@/assets/img/box-ok.png");
 }
 
 .box-2 {
   top: 140px;
   left: 395px;
-  background-image: url("@/assets/img/box-forgotten.png");
 }
 
 .box-3 {
   top: 248px;
   left: 235px;
-  background-image: url("@/assets/img/box-forgotten.png");
 }
 
 .box-4 {
   top: 248px;
   left: 395px;
-  background-image: url("@/assets/img/box-forgotten.png");
 }
+
 .box-5 {
   top: 355px;
   left: 235px;
-  background-image: url("@/assets/img/box-forgotten.png");
 }
 
 .box-6 {
   top: 355px;
   left: 395px;
-  background-image: url("@/assets/img/box-ok.png");
 }
 
 .box-7 {
   top: 465px;
   left: 235px;
-  background-image: url("@/assets/img/box-forgotten.png");
 }
 
 .box-8 {
   top: 465px;
   left: 395px;
-  background-image: url("@/assets/img/box-ok.png");
 }
 
 /* Second Shelf */
@@ -90,49 +99,41 @@ import someBoxes from "@/mocks/someBoxes.json";
 .box-9 {
   top: 140px;
   left: 655px;
-  background-image: url("@/assets/img/box-ok.png");
 }
 
 .box-10 {
   top: 140px;
   left: 815px;
-  background-image: url("@/assets/img/box-ok.png");
 }
 
 .box-11 {
   top: 248px;
   left: 655px;
-  background-image: url("@/assets/img/box-ok.png");
 }
 
 .box-12 {
   top: 248px;
   left: 815px;
-  background-image: url("@/assets/img/box-ok.png");
 }
 
 .box-13 {
   top: 355px;
   left: 655px;
-  background-image: url("@/assets/img/box-ok.png");
 }
 
 .box-14 {
   top: 355px;
   left: 815px;
-  background-image: url("@/assets/img/box-ok.png");
 }
 
 .box-15 {
   top: 465px;
   left: 655px;
-  background-image: url("@/assets/img/box-ok.png");
 }
 
 .box-16 {
   top: 465px;
   left: 815px;
-  background-image: url("@/assets/img/box-forgotten.png");
 }
 
 /* Third Shelf */
@@ -140,48 +141,40 @@ import someBoxes from "@/mocks/someBoxes.json";
 .box-17 {
   top: 140px;
   left: 1070px;
-  background-image: url("@/assets/img/box-ok.png");
 }
 
 .box-18 {
   top: 140px;
   left: 1230px;
-  background-image: url("@/assets/img/box-ok.png");
 }
 
 .box-19 {
   top: 248px;
   left: 1070px;
-  background-image: url("@/assets/img/box-ok.png");
 }
 
 .box-20 {
   top: 248px;
   left: 1230px;
-  background-image: url("@/assets/img/box-ok.png");
 }
 
 .box-21 {
   top: 355px;
   left: 1070px;
-  background-image: url("@/assets/img/box-ok.png");
 }
 
 .box-22 {
   top: 355px;
   left: 1230px;
-  background-image: url("@/assets/img/box-ok.png");
 }
 
 .box-23 {
   top: 465px;
   left: 1070px;
-  background-image: url("@/assets/img/box-ok.png");
 }
 
 .box-24 {
   top: 465px;
   left: 1230px;
-  background-image: url("@/assets/img/box-ok.png");
 }
 </style>
