@@ -13,15 +13,16 @@ export const useDataStore = defineStore("data", {
         return state.boxes.every((box) => box.cell !== cell);
       });
     },
-    cellToNewBox() {
-      return this.freeCells.shift() ?? null;
-    },
   },
   actions: {
-    deleteBox: (state, boxId) => {
-      state.boxes.filter((box) => {
-        box.id !== boxId;
-      });
+    deleteBox(boxId) {
+      const index = this.boxes.findIndex((box) => box.id === boxId);
+      if (index !== -1) {
+        this.boxes.splice(index, 1);
+      }
+    },
+    cellToNewBox() {
+      return this.getters.freeCells.shift() ?? null;
     },
   },
 });

@@ -25,6 +25,6 @@ const router = useRouter();
 const box = dataStore.boxes.find((box) => +box.id === +route.params.id);
 
 const deleteBox = (boxId) => {
-  console.log("deleting box id " + boxId);
+  dataStore.deleteBox(boxId);
 };
 </script>

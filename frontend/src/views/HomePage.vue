@@ -56,7 +56,7 @@
 import { useDataStore } from "../stores/data";
 import { useAuthStore } from "../stores/auth";
 import { useRouter } from "vue-router";
-import { ref, shallowRef } from "vue";
+import { onMounted, ref, shallowRef } from "vue";
 
 const router = useRouter();
 const dataStore = useDataStore();
