@@ -13,7 +13,11 @@
         </svg>
       </router-link>
 
-      <router-link :to="{ name: 'createProduct' }" class="mx-2">
+      <router-link
+        v-if="authStore.isAuthenticated"
+        :to="{ name: 'createProduct' }"
+        class="mx-2"
+      >
         <svg
           class="header__icon"
           xmlns="http://www.w3.org/2000/svg"
@@ -41,20 +45,30 @@
       </router-link>
     </div>
     <div>
-      <button @click="$emit('open-login-modal')">
-        <svg
-          class="header__icon"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 32 32"
-        >
-          <path
-            d="M16.64 20.67a1 1 0 1 0 1.42 1.41l5.9-6.06-5.9-6.06a1 1 0 0 0-1.42 1.41L20.26 15H.99a1 1 0 0 0 0 2h19.33zM30 0H12a2 2 0 0 0-2 2v9h2.02V3.22c0-.67.54-1.21 1.2-1.21h15.53c.67 0 1.21.54 1.21 1.21l.03 25.57a1.2 1.2 0 0 1-1.2 1.21H13.22a1.2 1.2 0 0 1-1.21-1.2v-7.83H10V30c0 1.1.9 2 2 2h18a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"
-          />
-        </svg>
-      </button>
+      <login-button
+        v-if="!authStore.isAuthenticated"
+        @click="$emit('open-login-modal')"
+      />
+      <logout-button v-else @click="logout" />
     </div>
   </div>
 </template>
+
+<script setup>
+import { useAuthStore } from "@/stores/auth";
+import { useRouter } from "vue-router";
+import LoginButton from "@/common/components/LoginButton.vue";
+import LogoutButton from "@/common/components/LogoutButton.vue";
+
+const authStore = useAuthStore();
+const router = useRouter();
+
+const logout = async () => {
+  await authStore.logout();
+  await router.replace({ name: "home" });
+  location.reload();
+};
+</script>
 
 <style lang="scss" scoped>
 .header {

@@ -1,5 +1,5 @@
 <template>
-  <div class="toggler">
+  <div v-if="authStore.isAuthenticated" class="toggler">
     <button
       class="toggler__button"
       :class="{ active: homePage === HomeWithImage }"
@@ -54,22 +54,27 @@
 
 <script setup>
 import { useDataStore } from "../stores/data";
+import { useAuthStore } from "../stores/auth";
 import { useRouter } from "vue-router";
-import { shallowRef } from "vue";
+import { ref, shallowRef } from "vue";
 
 const router = useRouter();
-const data = useDataStore();
-const boxes = data.boxes;
+const dataStore = useDataStore();
+const authStore = useAuthStore();
+const boxes = ref(authStore.isAuthenticated ? dataStore.boxes : "");
 
 import HomeWithImage from "../modules/HomeWithImage.vue";
 import HomeWithTable from "../modules/HomeWithTable.vue";
+
 const homePage = shallowRef(HomeWithImage);
 
 const setImageView = () => (homePage.value = HomeWithImage);
 const setTableView = () => (homePage.value = HomeWithTable);
 
 const redirectToCard = (boxId) => {
-  router.push({ path: `product/edit/${boxId}` });
+  authStore.isAuthenticated
+    ? router.push({ path: `product/edit/${boxId}` })
+    : "";
 };
 </script>
 

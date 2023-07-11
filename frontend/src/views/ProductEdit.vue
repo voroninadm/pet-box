@@ -10,14 +10,16 @@
 </template>
 
 <script setup>
+import { useDataStore } from "../stores/data";
+import { useRoute } from "vue-router";
+
 import ProductCard from "@/modules/ProductCard.vue";
 import SaveButton from "@/common/components/SaveButton.vue";
 import DeleteButton from "@/common/components/DeleteButton.vue";
-import { useRoute } from "vue-router";
-import boxes from "@/mocks/boxes";
 
+const data = useDataStore();
 const route = useRoute();
 
 // Находим задачу из массива задач по id из строки URL
-const box = boxes.find((box) => +box.id === +route.params.id);
+const box = data.boxes.find((box) => +box.id === +route.params.id);
 </script>

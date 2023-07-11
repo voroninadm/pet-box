@@ -1,14 +1,8 @@
 export default [
   {
-    path: "",
+    path: "/",
     name: "home",
     component: () => import("../views/HomePage.vue"),
-    meta: { layout: "DefaultLayout" },
-  },
-  {
-    path: "/spage",
-    name: "secondPage",
-    component: () => import("../views/SecondPage.vue"),
     meta: { layout: "DefaultLayout" },
   },
   {
@@ -25,7 +19,7 @@ export default [
       {
         path: "edit/:id",
         name: "editProduct",
-        component: () => import("@/views/ProductUpdate.vue"),
+        component: () => import("@/views/ProductEdit.vue"),
       },
     ],
   },
