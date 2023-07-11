@@ -41,26 +41,36 @@
       </svg>
     </button>
   </div>
+
   <transition
     name="view"
     enter-active-class="animate__animated animate__fadeInRight"
   >
-    <component :is="homePage">
+    <component :is="homePage" :boxes="boxes" @clickToBox="redirectToCard">
       <slot />
     </component>
   </transition>
 </template>
 
 <script setup>
-import HomeWithImage from "../modules/HomeWithImage.vue";
-import HomeWithTable from "../modules/HomeWithTable.vue";
-
+import { useDataStore } from "../stores/data";
+import { useRouter } from "vue-router";
 import { shallowRef } from "vue";
 
+const router = useRouter();
+const data = useDataStore();
+const boxes = data.boxes;
+
+import HomeWithImage from "../modules/HomeWithImage.vue";
+import HomeWithTable from "../modules/HomeWithTable.vue";
 const homePage = shallowRef(HomeWithImage);
 
 const setImageView = () => (homePage.value = HomeWithImage);
 const setTableView = () => (homePage.value = HomeWithTable);
+
+const redirectToCard = (boxId) => {
+  router.push({ path: `product/edit/${boxId}` });
+};
 </script>
 
 <style scoped>

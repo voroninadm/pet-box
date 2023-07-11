@@ -20,10 +20,4 @@ const route = useRoute();
 
 // Находим задачу из массива задач по id из строки URL
 const box = boxes.find((box) => +box.id === +route.params.id);
-
-import { onMounted } from "vue";
-
-onMounted(() => {
-  console.log(box);
-});
 </script>

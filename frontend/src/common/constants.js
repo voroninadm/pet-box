@@ -5,7 +5,7 @@ export const totalDaysHolding = 7;
 const totalCellsAmount = 24;
 
 // массив всех ячеек
-export const cells = Array.from(
+export const allCells = Array.from(
   Array(totalCellsAmount),
   (_, index) => index + 1
 );

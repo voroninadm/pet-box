@@ -1,24 +1,29 @@
 <template>
   <div class="shelves">
     <div
-      v-for="box in someBoxes"
+      v-for="box in boxes"
       :key="box.id"
       class="box"
       :class="[
         `box-${box.cell}`,
         isHoldingDateExpired(box.date_add) ? 'box-forgotten' : 'box-ok',
       ]"
-      @click="router.push({ path: `product/edit/${box.id}` })"
+      @click="$emit('clickToBox', box.id)"
     />
   </div>
 </template>
 
 <script setup>
-import someBoxes from "@/mocks/someBoxes.json";
 import { isHoldingDateExpired } from "@/common/helpers";
-import { useRouter } from "vue-router";
 
-const router = useRouter();
+defineProps({
+  boxes: {
+    type: Array,
+    required: true,
+  },
+});
+
+defineEmits(["clickToBox"]);
 </script>
 
 <style lang="scss" scoped>

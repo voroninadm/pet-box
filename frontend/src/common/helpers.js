@@ -21,9 +21,3 @@ export const deadlineDate = (date = new Date()) => {
   let startHoldingDate = moment(date);
   return startHoldingDate.add(totalDaysHolding, "days").format("D MMM YYYY");
 };
-
-export function getFreeCells(cells, BoxesArray) {
-  return cells.filter((cell) => {
-    return BoxesArray.some((box) => box.cell !== cell);
-  });
-}
