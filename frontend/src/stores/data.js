@@ -17,5 +17,11 @@ export const useDataStore = defineStore("data", {
       return this.freeCells.shift() ?? null;
     },
   },
-  actions: {},
+  actions: {
+    deleteBox: (state, boxId) => {
+      state.boxes.filter((box) => {
+        box.id !== boxId;
+      });
+    },
+  },
 });
