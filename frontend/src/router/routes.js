@@ -1,3 +1,5 @@
+import { isLoggedIn } from "@/middlewares/isLoggedIn";
+
 export default [
   {
     path: "/",
@@ -6,10 +8,16 @@ export default [
     meta: { layout: "DefaultLayout" },
   },
   {
+    path: "/error",
+    name: "error",
+    component: () => import("../views/ErrorPage.vue"),
+    meta: { layout: "DefaultLayout" },
+  },
+  {
     path: "/product",
     name: "productPage",
     component: () => import("../views/ProductPage.vue"),
-    meta: { layout: "DefaultLayout" },
+    meta: { layout: "DefaultLayout", middlewares: [isLoggedIn] },
     children: [
       {
         path: "create",

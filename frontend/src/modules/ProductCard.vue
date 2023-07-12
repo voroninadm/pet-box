@@ -3,7 +3,7 @@
     appear
     enter-active-class="animate__animated animate__slideInDown"
   >
-    <section class="product w-1/4 mt-5 border drop-shadow p-3 bg-slate-50">
+    <section class="product w-1/4 mt-5 border drop-shadow-xl p-3 bg-slate-50">
       <div class="product__image"></div>
       <h1 class="text-center text-lg">Карточка товара</h1>
       <form action="#" class="flex flex-col">
