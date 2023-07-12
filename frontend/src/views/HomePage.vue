@@ -72,9 +72,7 @@ const setImageView = () => (homePage.value = HomeWithImage);
 const setTableView = () => (homePage.value = HomeWithTable);
 
 const redirectToCard = (boxId) => {
-  authStore.isAuthenticated
-    ? router.push({ path: `product/edit/${boxId}` })
-    : "";
+  router.push({ path: `product/edit/${boxId}` });
 };
 </script>
 

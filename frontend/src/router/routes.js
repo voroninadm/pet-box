@@ -1,4 +1,5 @@
 import { isLoggedIn } from "@/middlewares/isLoggedIn";
+import { isBoxInStore } from "../middlewares/isBoxInStore"; 
 
 export default [
   {
@@ -28,6 +29,7 @@ export default [
         path: "edit/:id",
         name: "editProduct",
         component: () => import("@/views/ProductEdit.vue"),
+        meta: { middlewares: [isBoxInStore] },
       },
     ],
   },
