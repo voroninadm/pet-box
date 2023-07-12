@@ -72,7 +72,7 @@ const box = props.box ? props.box : createNewBox();
 .product__image {
   width: 200px;
   height: 200px;
-  background: url("@/assets/img/box-adding.png") 50% 50% no-repeat;
+  background: url("@/assets/img/box-adding.webp") 50% 50% no-repeat;
   background-size: contain;
   margin: auto;
 }

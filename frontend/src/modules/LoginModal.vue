@@ -80,22 +80,22 @@ const submit = async () => {
   margin: auto;
 
   &__1 {
-    background: url("@/assets/img/box-1.png") 50% 50% no-repeat;
+    background: url("@/assets/img/box-1.webp") 50% 50% no-repeat;
     background-size: contain;
   }
 
   &__2 {
-    background: url("@/assets/img/box-2.png") 50% 50% no-repeat;
+    background: url("@/assets/img/box-2.webp") 50% 50% no-repeat;
     background-size: contain;
   }
 
   &__3 {
-    background: url("@/assets/img/box-3.png") 50% 50% no-repeat;
+    background: url("@/assets/img/box-3.webp") 50% 50% no-repeat;
     background-size: contain;
   }
 
   &__4 {
-    background: url("@/assets/img/box-4.png") 50% 50% no-repeat;
+    background: url("@/assets/img/box-4.webp") 50% 50% no-repeat;
     background-size: contain;
   }
 }

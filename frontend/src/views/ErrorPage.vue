@@ -30,7 +30,7 @@ const router = useRouter();
 .product__image {
   width: 300px;
   height: 280px;
-  background: url("@/assets/img/box-what.png") 50% 50% no-repeat;
+  background: url("@/assets/img/box-what.webp") 50% 50% no-repeat;
   background-size: contain;
   margin: auto;
 }

@@ -31,7 +31,7 @@ defineEmits(["clickToBox"]);
   width: 100vw;
   height: 100vh;
   position: relative;
-  background-image: url("@/assets/img/shelves.jpg");
+  background-image: url("@/assets/img/shelves.webp");
   background-size: cover;
 }
 
@@ -51,11 +51,11 @@ defineEmits(["clickToBox"]);
 }
 
 .box-ok {
-  background-image: url("@/assets/img/box-ok.png");
+  background-image: url("@/assets/img/box-ok.webp");
 }
 
 .box-forgotten {
-  background-image: url("@/assets/img/box-forgotten.png");
+  background-image: url("@/assets/img/box-forgotten.webp");
 }
 
 /* First shelf */

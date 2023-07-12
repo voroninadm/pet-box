@@ -10,6 +10,6 @@ export const allCells = Array.from(
   (_, index) => index + 1
 );
 
-// картинки для случайной подстановки, в assets/img/box-1.png ... box-n.png
+// картинки для случайной подстановки, в assets/img/box-1.webp ... box-n.webp
 export const minBoxImage = 1;
 export const maxBoxImage = 4;
