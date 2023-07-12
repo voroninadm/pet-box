@@ -4,7 +4,7 @@ import user from "@/mocks/user.json";
 
 export const useAuthStore = defineStore("auth", {
   state: () => ({
-    user: null,
+    user: user,
   }),
   getters: {
     isAuthenticated() {

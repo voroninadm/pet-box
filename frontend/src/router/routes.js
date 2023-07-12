@@ -8,7 +8,7 @@ export default [
     meta: { layout: "DefaultLayout" },
   },
   {
-    path: "/error",
+    path: "/:pathMatch(.*)*",
     name: "error",
     component: () => import("../views/ErrorPage.vue"),
     meta: { layout: "DefaultLayout" },
