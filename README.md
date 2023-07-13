@@ -1,6 +1,6 @@
 ![Alt-текст](https://raw.githubusercontent.com/voroninadm/pet-box/master/frontend/src/assets/img/box-ok.webp)
 
-# Пет-проект для отработки навыков "pet-box"
+# "pet-box"
 
 ### Фронт на Vue3 c примнением:
 
