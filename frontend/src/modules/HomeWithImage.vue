@@ -3,12 +3,14 @@
     <div
       v-for="box in boxes"
       :key="box.id"
+      tabindex="0"
       class="box"
       :class="[
         `box-${box.cell}`,
         isHoldingDateExpired(box.date_add) ? 'box-forgotten' : 'box-ok',
       ]"
       @click="$emit('clickToBox', box.id)"
+      @keyup.enter="$emit('clickToBox', box.id)"
     />
   </div>
 </template>
@@ -45,6 +47,12 @@ defineEmits(["clickToBox"]);
   background-repeat: no-repeat;
 
   &:hover {
+    scale: 1.1;
+    opacity: 0.85;
+  }
+
+  &:focus {
+    outline: none;
     scale: 1.1;
     opacity: 0.85;
   }
