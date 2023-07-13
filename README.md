@@ -1,3 +1,5 @@
+![Alt-текст](https://raw.githubusercontent.com/voroninadm/pet-box/master/frontend/src/assets/img/box-ok.webp)
+
 # pet-box
 
 ## Пет-проект для отработки навыков
