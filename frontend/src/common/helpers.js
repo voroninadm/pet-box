@@ -1,8 +1,13 @@
-import { totalDaysHolding } from "@/common/constants";
+import { totalDaysHolding, minScreenWidth } from "@/common/constants";
 
 import moment from "moment/dist/moment";
 import ru from "moment/dist/locale/ru";
 moment.updateLocale("ru", ru);
+
+export const isMobileOrSmallScreen =
+  /Mobile|webOS|BlackBerry|IEMobile|MeeGo|mini|Fennec|Windows Phone|Android|iP(ad|od|hone)/i.test(
+    navigator.userAgent
+  ) || window.screen.width <= minScreenWidth;
 
 // data functions
 export const currentDate = moment();
