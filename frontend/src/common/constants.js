@@ -1,3 +1,6 @@
+// Минимальная ширина экрана для показа картинки на главной
+export const minScreenWidth = 875;
+
 // количество дней хранения на складе
 export const totalDaysHolding = 7;
 

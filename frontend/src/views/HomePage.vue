@@ -1,5 +1,5 @@
 <template>
-  <div v-if="authStore.isAuthenticated" class="toggler">
+  <div v-if="authStore.isAuthenticated && !mobileOrSmallScreen" class="toggler">
     <button
       class="toggler__button"
       :class="{ active: homePage === HomeWithImage }"
@@ -57,6 +57,7 @@ import { useDataStore } from "../stores/data";
 import { useAuthStore } from "../stores/auth";
 import { useRouter } from "vue-router";
 import { ref, shallowRef } from "vue";
+import { minScreenWidth } from "@/common/constants";
 
 const router = useRouter();
 const dataStore = useDataStore();
@@ -66,7 +67,14 @@ const boxes = ref(authStore.isAuthenticated ? dataStore.boxes : "");
 import HomeWithImage from "../modules/HomeWithImage.vue";
 import HomeWithTable from "../modules/HomeWithTable.vue";
 
-const homePage = shallowRef(HomeWithImage);
+const mobileOrSmallScreen =
+  /Mobile|webOS|BlackBerry|IEMobile|MeeGo|mini|Fennec|Windows Phone|Android|iP(ad|od|hone)/i.test(
+    navigator.userAgent
+  ) || window.screen.width <= minScreenWidth;
+
+const homePage = mobileOrSmallScreen
+  ? shallowRef(HomeWithTable)
+  : shallowRef(HomeWithImage);
 
 const setImageView = () => (homePage.value = HomeWithImage);
 const setTableView = () => (homePage.value = HomeWithTable);
