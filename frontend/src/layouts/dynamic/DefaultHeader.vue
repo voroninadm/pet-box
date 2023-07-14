@@ -1,6 +1,6 @@
 <template>
-  <div class="header bg-slate-50">
-    <div class="flex gap-2">
+  <div class="header bg-slate-100 drop-shadow-xl px-5 py-3 lg:px-10">
+    <div class="flex gap-3">
       <router-link :to="{ name: 'home' }">
         <svg
           class="header__icon"
@@ -73,7 +73,6 @@ const logout = async () => {
 <style lang="scss" scoped>
 .header {
   width: 100%;
-  padding: 10px 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;

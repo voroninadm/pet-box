@@ -3,24 +3,26 @@
     appear
     enter-active-class="animate__animated animate__slideInDown"
   >
-    <section class="product w-1/4 mt-5 border drop-shadow-xl p-3 bg-slate-50">
+    <section
+      class="product w-3/4 md:w-2/4 lg:w-1/3 xl:w-1/4 mt-5 border drop-shadow-xl p-3 bg-slate-50"
+    >
       <div class="product__image"></div>
       <h1 class="text-center text-lg">Карточка товара</h1>
       <form action="#" class="flex flex-col">
         <div class="flex flex-col my-3 gap-2">
-          <label class="flex justify-between"
-            >Номер накладной
+          <label class="flex justify-between text-sm md:text-base"
+            >Накладная
             <input class="text-end border" :value="box.invoice" type="text" />
           </label>
-          <label class="flex justify-between"
+          <label class="flex justify-between text-sm md:text-base"
             >Заказчик
             <input class="text-end border" :value="box.customer" type="text" />
           </label>
-          <label class="flex justify-between">
+          <label class="flex justify-between text-sm md:text-base">
             Начало хранения
             <span>{{ normalizeData(box.date_add) }}</span>
           </label>
-          <label class="flex justify-between">
+          <label class="flex justify-between text-sm md:text-base">
             Окончание хранения
             <span>{{ deadlineDate(box.date_add) }}</span>
           </label>
